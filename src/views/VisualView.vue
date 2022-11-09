@@ -1,11 +1,16 @@
 <template>
   <div class="about">
-    <h1>Data Visualization & Analysis</h1>
+    <h3>Data Visualization & Analysis</h3>
     <!-- <BarChart></BarChart> -->
-    <div>
-      <h1 class="title">LineChart</h1>
-      <div class="chart-div">
-        <LineChart :chartData="chartData"></LineChart>
+    <div class="row">
+      <div class="line-chart">
+        <LineChart></LineChart>
+      </div>
+      <!-- <div class="bar-chart">
+        <BarChart></BarChart>
+      </div> -->
+      <div class="pie-chart">
+        <PieChart></PieChart>
       </div>
     </div>
   </div>
@@ -14,22 +19,17 @@
 import { getDatabase, ref, onValue } from "firebase/database";
 // import BarChart from "../components/BarChart.vue";
 import LineChart from "../components/LineChart.vue";
+import PieChart from "../components/PieChart.vue";
 
 export default {
   name: "VisualView",
   components: {
     // BarChart,
     LineChart,
+    PieChart,
   },
   data() {
-    return {
-      chartData: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr'],
-        datasets: {
-          data: [100, 150, 300, 200],
-        },
-      },
-    };
+    return {};
   },
   mounted() {
     this.retrieveFromFirebase();
@@ -48,6 +48,11 @@ export default {
 </script>
 <style>
 .title {
-  color: tomato;
+  color: #62d54f;
+}
+.row {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
 }
 </style>

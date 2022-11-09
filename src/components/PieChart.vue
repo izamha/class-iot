@@ -1,5 +1,5 @@
 <template>
-  <Bar
+  <Pie
     :chart-options="chartOptions"
     :chart-data="chartData"
     :chart-id="chartId"
@@ -13,33 +13,28 @@
 </template>
 
 <script>
-import { Bar } from "vue-chartjs";
+import { Pie } from "vue-chartjs";
+
 import {
   Chart as ChartJS,
   Title,
   Tooltip,
   Legend,
-  BarElement,
+  ArcElement,
   CategoryScale,
-  LinearScale,
 } from "chart.js";
 
-ChartJS.register(
-  Title,
-  Tooltip,
-  Legend,
-  BarElement,
-  CategoryScale,
-  LinearScale
-);
+ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale);
 
 export default {
-  name: "BarChart",
-  components: { Bar },
+  name: "PieChart",
+  components: {
+    Pie,
+  },
   props: {
     chartId: {
       type: String,
-      default: "bar-chart",
+      default: "pie-chart",
     },
     datasetIdKey: {
       type: String,
@@ -47,11 +42,11 @@ export default {
     },
     width: {
       type: Number,
-      default: 100,
+      default: 220,
     },
     height: {
       type: Number,
-      default: 100,
+      default: 220,
     },
     cssClasses: {
       default: "",
@@ -62,33 +57,45 @@ export default {
       default: () => {},
     },
     plugins: {
-      type: Object,
-      default: () => {},
+      type: Array,
+      default: () => [],
+    },
+    datasetLabels: {
+      type: Array,
+      default: () => [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ],
+    },
+    datasetData: {
+      type: Array,
+      default: () => [40, 20, 80, 10, 45, 23, 40, 20, 80, 10, 70, 10],
     },
   },
   data() {
     return {
       chartData: {
-        labels: ["Jan", "Feb", "Mar", "Apr"],
-
+        labels: this.datasetLabels,
         datasets: [
           {
-            label: "This is data viz",
-
-            data: [40, 20, 12, 90],
-            fill: true,
-            backgroundColor: "#62D54F",
-            tension: 31,
+            backgroundColor: ["#E46651", "#66ee51", "#A1FA1C", "#4A681F"],
+            data: this.datasetData,
           },
         ],
       },
       chartOptions: {
         responsive: true,
-        // scales: {
-        //   x: {
-        //     type: "time",
-        //   },
-        // },
+        maintainAspectRatio: false,
       },
     };
   },

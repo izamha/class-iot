@@ -4,7 +4,8 @@ import App from "./App.vue";
 import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
-// import { rtdbPlugin } from "vuefire";
+
+
 
 // Vue.use(rtdbPlugin);
 // Your web app's Firebase configuration
