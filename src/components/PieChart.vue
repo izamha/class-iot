@@ -42,11 +42,11 @@ export default {
     },
     width: {
       type: Number,
-      default: 220,
+      default: 150,
     },
     height: {
       type: Number,
-      default: 220,
+      default: 150,
     },
     cssClasses: {
       default: "",
@@ -88,7 +88,15 @@ export default {
         labels: this.datasetLabels,
         datasets: [
           {
-            backgroundColor: ["#E46651", "#66ee51", "#A1FA1C", "#4A681F"],
+            backgroundColor: [
+              "#E46651",
+              "#66ee51",
+              "#A1FA1C",
+              "#4A681F",
+              "#5A3732",
+              "#32355A",
+              "#8D92CC",
+            ],
             data: this.datasetData,
           },
         ],
