@@ -1,12 +1,6 @@
-import firebase from "firebase/compat/app";
-import { createApp } from "vue";
-import App from "./App.vue";
-import "./registerServiceWorker";
-import router from "./router";
-import store from "./store";
-// import { rtdbPlugin } from "vuefire";
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
 
-// Vue.use(rtdbPlugin);
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAhMiyCFMdCcRgDcFvXINYtEZb_3X1yUZo",
@@ -19,5 +13,4 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-createApp(App).use(store).use(router).mount("#app");
+const app = initializeApp(firebaseConfig);
