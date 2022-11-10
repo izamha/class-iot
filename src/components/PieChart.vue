@@ -74,12 +74,11 @@ export default {
         "Sep",
         "Oct",
         "Nov",
-        "Dec",
       ],
     },
     datasetData: {
       type: Array,
-      default: () => [40, 20, 80, 10, 45, 23, 40, 20, 80, 10, 70, 10],
+      default: () => [40, 20, 80, 10, 45, 23, 40, 20, 80, 10, 70],
     },
   },
   data() {

@@ -86,13 +86,12 @@ export default {
           "Sept",
           "Oct",
           "Nov",
-          "Dec",
         ],
         datasets: [
           {
             label: ["Weight(g)"],
             backgroundColor: ["#62D54F"],
-            data: [390, 100, 400, 390, 800, 400, 510, 700, 460, 100, 245, 230],
+            data: [390, 100, 400, 390, 800, 400, 510, 700, 460, 100, 245],
           },
           {
             label: ["Humidity(%rh)"],
