@@ -1,24 +1,27 @@
 <template>
   <div class="p-0">
     <!-- <BarChart></BarChart> -->
-    <v-row>
-      <v-tabs
-        v-model="selectedMainCat"
-        align-with-title
-        next-icon="mdi-arrow-right-bold-box-outline"
-        prev-icon="mdi-arrow-left-bold-box-outline"
-        show-arrows
-        grow
+    <v-tabs
+      v-model="selectedMainCat"
+      align-with-title
+      next-icon="mdi-arrow-right-bold-box-outline"
+      prev-icon="mdi-arrow-left-bold-box-outline"
+      show-arrows
+      grow
+    >
+      <v-tabs-slider color="#FF1100" />
+      <v-tab
+        v-for="(item, index) in bridges"
+        :key="index"
+        @click="activate(index)"
       >
-        <v-tabs-slider color="#FFD700" />
-        <v-tab
-          v-for="(item, index) in Bridges"
-          :key="index"
-          @click="activate()"
-        >
-          {{ item.title }}
-        </v-tab>
-      </v-tabs>
+        {{ item.title }}
+      </v-tab>
+    </v-tabs>
+    <v-row>
+      <v-col cols="12" md="12" sm="12">
+        <h1>Current Bridge: {{ bridges[selectedTab].title }}</h1>
+      </v-col>
     </v-row>
   </div>
 </template>
@@ -39,9 +42,9 @@ export default {
     return {
       lat: "",
       lng: "",
-      selectedSubCat: 0,
+      selectedTab: 0,
       selectedMainCat: 0, // tabs
-      Bridges: [
+      bridges: [
         {
           id: 1,
           title: "Bridge #1",
@@ -62,6 +65,22 @@ export default {
           id: 5,
           title: "Bridge #6",
         },
+        {
+          id: 5,
+          title: "Bridge #7",
+        },
+        {
+          id: 5,
+          title: "Bridge #8",
+        },
+        {
+          id: 5,
+          title: "Bridge #9",
+        },
+        {
+          id: 5,
+          title: "Bridge #10",
+        },
       ],
     };
   },
@@ -69,18 +88,20 @@ export default {
     this.retrieveFromFirebase();
   },
   methods: {
-    activate() {
+    activate(index) {
+      this.selectedTab = index;
       this.Active;
     },
     retrieveFromFirebase() {
       const db = getDatabase();
-      const dbRef = ref(db, "Bridges/");
+      const dbRef = ref(db, "bridges/");
       onValue(dbRef, (snapshot) => {
         const data = snapshot.val();
-        Object.values(data).forEach((bridgeItem) => {
-          this.lat = bridgeItem.Latitude;
-          this.lng = bridgeItem.Longitude;
-        });
+        // Object.values(data).forEach((bridgeItem) => {
+        //   this.lat = bridgeItem.Latitude;
+        //   this.lng = bridgeItem.Longitude;
+        // });
+        console.log(data['bridge1'].bridgeId);
       });
     },
   },

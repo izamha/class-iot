@@ -1,0 +1,7 @@
+{
+  "bridges": [
+    { "id": 1, "name": "Bridge #1" },
+    { "id": 2, "name": "Bridge #2" },
+    { "id": 3, "name": "Bridge #3" }
+  ]
+}
