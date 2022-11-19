@@ -1,7 +1,56 @@
 {
-  "bridges": [
-    { "id": 1, "name": "Bridge #1" },
-    { "id": 2, "name": "Bridge #2" },
-    { "id": 3, "name": "Bridge #3" }
-  ]
+  "bridges": {
+    "bridge1": {
+      "1668841980": {
+        "vehicleId": 1,
+        "humidity": 35,
+        "lat": 1.184088,
+        "lng": 27.047712,
+        "time": 1668841980,
+        "vehicle_weight": 300.123
+      },
+      "1668841982": {
+        "vehicleId": 2,
+        "humidity": 35,
+        "lat": 1.184088,
+        "lng": 27.047712,
+        "time": 1668841982,
+        "vehicle_weight": 301.123
+      },
+      "16688419801": {
+        "vehicleId": 3,
+        "humidity": 35,
+        "lat": 1.184088,
+        "lng": 27.047712,
+        "time": 1668841981,
+        "vehicle_weight": 304.123
+      }
+    },
+    "bridge2": {
+      "1668841080": {
+        "vehicleId": 1,
+        "humidity": 35,
+        "lat": 1.184088,
+        "lng": 27.047712,
+        "time": 1668841980,
+        "vehicle_weight": 300.123
+      },
+      "1668841982": {
+        "vehicleId": 2,
+        "humidity": 35,
+        "lat": 1.184088,
+        "lng": 27.047712,
+        "time": 1668841982,
+        "vehicle_weight": 301.123
+      },
+      "16688419801": {
+        "vehicleId": 3,
+        "humidity": 35,
+        "lat": 1.184088,
+        "lng": 27.047712,
+        "time": 1668841981,
+        "vehicle_weight": 304.123
+      }
+    }
+  }
 }

@@ -1,32 +1,39 @@
 <template>
   <div class="p-0">
     <!-- <BarChart></BarChart> -->
-    <v-tabs
+    {{ bridges.length }}
+    <h4 v-for="(bridge, index) in bridges" :key="index">{{ bridge }}</h4>
+    <!-- <v-tabs
       v-model="selectedMainCat"
       align-with-title
       next-icon="mdi-arrow-right-bold-box-outline"
       prev-icon="mdi-arrow-left-bold-box-outline"
       show-arrows
       grow
+      v-if="bridges.length != 0"
     >
       <v-tabs-slider color="#FF1100" />
       <v-tab
-        v-for="(item, index) in bridges"
+        v-for="(bridge, index) in bridges"
         :key="index"
         @click="activate(index)"
       >
-        {{ item.title }}
+        Bridge #{{ bridge }}
       </v-tab>
-    </v-tabs>
+    </v-tabs> -->
     <v-row>
       <v-col cols="12" md="12" sm="12">
-        <h1>Current Bridge: {{ bridges[selectedTab].title }}</h1>
+        <h1 v-if="bridges.length != 0">
+          Current Bridge: {{ bridges[selectedTab].bridgeId }}
+        </h1>
       </v-col>
     </v-row>
   </div>
+  <p>{{ getWeight }}</p>
 </template>
+
 <script>
-import { getDatabase, ref, onValue } from "firebase/database";
+import { mapState } from "vuex";
 // import BarChart from "../components/BarChart.vue";
 // import LineChart from "../components/LineChart.vue";
 // import PieChart from "../components/PieChart.vue";
@@ -44,70 +51,27 @@ export default {
       lng: "",
       selectedTab: 0,
       selectedMainCat: 0, // tabs
-      bridges: [
-        {
-          id: 1,
-          title: "Bridge #1",
-        },
-        {
-          id: 2,
-          title: "Bridge #2",
-        },
-        {
-          id: 3,
-          title: "Bridge #4",
-        },
-        {
-          id: 4,
-          title: "Bridge #5",
-        },
-        {
-          id: 5,
-          title: "Bridge #6",
-        },
-        {
-          id: 5,
-          title: "Bridge #7",
-        },
-        {
-          id: 5,
-          title: "Bridge #8",
-        },
-        {
-          id: 5,
-          title: "Bridge #9",
-        },
-        {
-          id: 5,
-          title: "Bridge #10",
-        },
-      ],
     };
   },
   mounted() {
-    this.retrieveFromFirebase();
+    this.$store.dispatch("retrieveFromFirebase");
   },
+  computed: {
+    ...mapState({
+      bridges: (state) => state.bridges,
+    }),
+  },
+  created() {},
   methods: {
     activate(index) {
       this.selectedTab = index;
       this.Active;
     },
-    retrieveFromFirebase() {
-      const db = getDatabase();
-      const dbRef = ref(db, "bridges/");
-      onValue(dbRef, (snapshot) => {
-        const data = snapshot.val();
-        // Object.values(data).forEach((bridgeItem) => {
-        //   this.lat = bridgeItem.Latitude;
-        //   this.lng = bridgeItem.Longitude;
-        // });
-        console.log(data['bridge1'].bridgeId);
-      });
-    },
+
   },
 };
 </script>
-<style>
+<style scoped>
 .title {
   color: #62d54f;
 }
