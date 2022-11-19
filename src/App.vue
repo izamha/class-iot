@@ -1,9 +1,13 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/visual">Data Visualization</router-link>
-  </nav>
-  <router-view />
+  <v-app>
+    <v-main class="main">
+      <nav>
+        <router-link to="/">Home</router-link> |
+        <router-link to="/visual">Data Visualization</router-link>
+      </nav>
+      <router-view></router-view>
+    </v-main>
+  </v-app>
 </template>
 
 <style lang="scss">

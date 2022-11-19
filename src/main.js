@@ -33,5 +33,5 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const app = Vue.createApp(App);
-app.use(vuetify);
 app.use(store).use(router).mount("#app");
+app.use(vuetify);

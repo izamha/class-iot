@@ -1,69 +1,77 @@
 <template>
-  <div class="about">
-    <h3>Data Visualization & Analysis</h3>
+  <div class="p-0">
     <!-- <BarChart></BarChart> -->
-    <div class="row">
-      <div class="line-chart">
-        <h2>Chart 1</h2>
-        <LineChart></LineChart>
-
-        <ul class="location">
-          <li>Latitude: {{ lat }}</li>
-          <li>Longitude: {{ lng }}</li>
-        </ul>
-      </div>
-      <!-- <div class="bar-chart">
-        <BarChart></BarChart>
-      </div> -->
-      <div class="pie-chart">
-        <PieChart></PieChart>
-        <hr class="divider" />
-        <div class="desc">
-          <p>
-            <b>Chart 1</b> Represents the incurred Weight(g) and Humidity(%rh)
-            through-out the year,
-          </p>
-          <ul>
-            <li>
-              The more weight and harsh climate conditions(Humidity) the more
-              damage on bridges.
-            </li>
-            <li>
-              During the busiest months of the year, more damage on bridges
-              should be expected.
-            </li>
-            <li>
-             Infrastructure pre-planning should be made based on expected damage.
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <v-row>
+      <v-tabs
+        v-model="selectedMainCat"
+        align-with-title
+        next-icon="mdi-arrow-right-bold-box-outline"
+        prev-icon="mdi-arrow-left-bold-box-outline"
+        show-arrows
+        grow
+      >
+        <v-tabs-slider color="#FFD700" />
+        <v-tab
+          v-for="(item, index) in Bridges"
+          :key="index"
+          @click="activate()"
+        >
+          {{ item.title }}
+        </v-tab>
+      </v-tabs>
+    </v-row>
   </div>
 </template>
 <script>
 import { getDatabase, ref, onValue } from "firebase/database";
 // import BarChart from "../components/BarChart.vue";
-import LineChart from "../components/LineChart.vue";
-import PieChart from "../components/PieChart.vue";
+// import LineChart from "../components/LineChart.vue";
+// import PieChart from "../components/PieChart.vue";
 
 export default {
   name: "VisualView",
   components: {
     // BarChart,
-    LineChart,
-    PieChart,
+    // LineChart,
+    // PieChart,
   },
   data() {
     return {
       lat: "",
       lng: "",
+      selectedSubCat: 0,
+      selectedMainCat: 0, // tabs
+      Bridges: [
+        {
+          id: 1,
+          title: "Bridge #1",
+        },
+        {
+          id: 2,
+          title: "Bridge #2",
+        },
+        {
+          id: 3,
+          title: "Bridge #4",
+        },
+        {
+          id: 4,
+          title: "Bridge #5",
+        },
+        {
+          id: 5,
+          title: "Bridge #6",
+        },
+      ],
     };
   },
   mounted() {
     this.retrieveFromFirebase();
   },
   methods: {
+    activate() {
+      this.Active;
+    },
     retrieveFromFirebase() {
       const db = getDatabase();
       const dbRef = ref(db, "Bridges/");
