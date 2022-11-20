@@ -15,16 +15,13 @@ export default createStore({
     retrieveFromFirebase() {
       const db = getDatabase();
       const dbRef = ref(db, "bridges/");
-      const bridgeObjects = [];
+      // const bridgeObjects = [];
       onValue(dbRef, (snapshot) => {
         const data = snapshot.val();
-        Object.values(data).forEach((bridgeObject) => {
-          bridgeObjects.push(bridgeObject);
-        });
-      });
-      bridgeObjects.forEach((bridgeItem) => {
-        // this.state.bridges.push(bridgeItem);
-        console.log("b: ", bridgeItem); 
+        // Object.values(data).forEach((bridgeObject) => {
+        //   bridgeObjects.push(bridgeObject);
+        // });
+        console.log(Object.values(data));
       });
     },
   },
