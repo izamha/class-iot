@@ -1,38 +1,37 @@
 <template>
   <div class="p-0">
     <!-- <BarChart></BarChart> -->
-    {{ bridges.length }}
-    <h4 v-for="(bridge, index) in bridges" :key="index">{{ bridge }}</h4>
-    <!-- <v-tabs
+
+    <!-- <h4 v-for="(bridge, index) in bridges" :key="index">{{ bridge[Object.keys(bridge)[0]] }}</h4> -->
+    <v-tabs
       v-model="selectedMainCat"
       align-with-title
       next-icon="mdi-arrow-right-bold-box-outline"
       prev-icon="mdi-arrow-left-bold-box-outline"
       show-arrows
       grow
-      v-if="bridges.length != 0"
     >
       <v-tabs-slider color="#FF1100" />
       <v-tab
-        v-for="(bridge, index) in bridges"
+        v-for="(key, index) in bridgeKeys"
         :key="index"
         @click="activate(index)"
       >
-        Bridge #{{ bridge }}
+        {{ key }}
       </v-tab>
-    </v-tabs> -->
+    </v-tabs>
     <v-row>
       <v-col cols="12" md="12" sm="12">
-        <h1 v-if="bridges.length != 0">
-          Current Bridge: {{ bridges[selectedTab].bridgeId }}
+        <h1 v-for="(vehicle, index) in bridgeData['vehicles']" :key="index">
+          Vehicle: {{ vehicle }}
         </h1>
       </v-col>
     </v-row>
   </div>
-  <p>{{ getWeight }}</p>
 </template>
 
 <script>
+import bridges from "../data/bridges2.json";
 import { mapState } from "vuex";
 // import BarChart from "../components/BarChart.vue";
 // import LineChart from "../components/LineChart.vue";
@@ -51,14 +50,19 @@ export default {
       lng: "",
       selectedTab: 0,
       selectedMainCat: 0, // tabs
+      bridges: "",
+      bridgeKeys: [],
+      bridgeData: "",
     };
   },
   mounted() {
-    this.$store.dispatch("retrieveFromFirebase");
+    this.bridges = bridges;
+    // this.$store.dispatch("retrieveFromFirebase");
+    this.getKeys();
   },
   computed: {
     ...mapState({
-      bridges: (state) => state.bridges,
+      bridges2: (state) => state.bridges,
     }),
   },
   created() {},
@@ -66,8 +70,17 @@ export default {
     activate(index) {
       this.selectedTab = index;
       this.Active;
+      this.bridgeData = this.bridges.bridges[this.bridgeKeys[index]];
     },
-
+    getKeys() {
+      let length = Object.keys(this.bridges.bridges).length;
+      console.log("Length of Bridges: ", length);
+      for (let i = 0; i < length; i++) {
+        const key = Object.keys(this.bridges.bridges)[i];
+        this.bridgeKeys.push(key);
+      }
+      // this.bridgeData = this.bridges.bridges[this.bridgeKeys[this.selectedTab]];
+    },
   },
 };
 </script>

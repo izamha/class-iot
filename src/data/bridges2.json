@@ -24,7 +24,7 @@
       "vehicles": [
         {
           "vehicleId": 1,
-          "humidity": 35,
+          "humidity": 40,
           "lat": 1.184088,
           "lng": 27.047712,
           "time": 1668841980,
