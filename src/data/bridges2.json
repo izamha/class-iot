@@ -45,6 +45,29 @@
           "lng": 29.047712,
           "time": 1668841980,
           "vehicle_weight": 307.123
+        },
+        {
+          "vehicleId": 4,
+          "humidity": 41,
+          "lat": -1.184088,
+          "lng": 29.047712,
+          "time": 1668841980,
+          "vehicle_weight": 307.123
+        },
+        {
+          "vehicleId": 5,
+          "humidity": 39,
+          "lat": -1.184088,
+          "lng": 29.047712,
+          "time": 1668841980,
+          "vehicle_weight": 307.123
+        },{
+          "vehicleId": 6,
+          "humidity": 43,
+          "lat": -1.184088,
+          "lng": 29.047712,
+          "time": 1668841980,
+          "vehicle_weight": 307.123
         }
       ]
     }

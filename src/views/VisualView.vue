@@ -22,8 +22,25 @@
     </v-tabs>
     <v-row>
       <v-col cols="12" md="12" sm="12">
-        <h1 v-for="(vehicle, index) in bridgeData['vehicles']" :key="index">
-          Vehicle: {{ vehicle }}
+        <v-tabs
+          v-model="selectedMainCat"
+          align-with-title
+          next-icon="mdi-arrow-right-bold-box-outline"
+          prev-icon="mdi-arrow-left-bold-box-outline"
+          show-arrows
+          grow
+        >
+          <v-tabs-slider color="#FF1100" />
+          <v-tab
+            v-for="(vehicles, index) in bridgeData['vehicles']"
+            :key="index"
+            @click="currentVehicle(vehicles)"
+          >
+            Vehicle #{{ vehicles["vehicleId"] }}
+          </v-tab>
+        </v-tabs>
+        <h1>
+          {{ vehicle }}
         </h1>
       </v-col>
     </v-row>
@@ -53,6 +70,7 @@ export default {
       bridges: "",
       bridgeKeys: [],
       bridgeData: "",
+      vehicle: "",
     };
   },
   mounted() {
@@ -72,9 +90,12 @@ export default {
       this.Active;
       this.bridgeData = this.bridges.bridges[this.bridgeKeys[index]];
     },
+    currentVehicle(vehicles) {
+      this.vehicle = vehicles
+      return this.vehicle;
+    },
     getKeys() {
       let length = Object.keys(this.bridges.bridges).length;
-      console.log("Length of Bridges: ", length);
       for (let i = 0; i < length; i++) {
         const key = Object.keys(this.bridges.bridges)[i];
         this.bridgeKeys.push(key);
