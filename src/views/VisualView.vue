@@ -42,7 +42,11 @@
         <div class="data-pres">
           <!-- {{ vehicle }} -->
           <h3>Vehicle Weight(g)</h3>
-          <pie-chart :width="300" :height="300"></pie-chart>
+          <pie-chart
+            :chart-data="chartData"
+            :width="200"
+            :height="200"
+          ></pie-chart>
         </div>
       </v-col>
     </v-row>
@@ -75,11 +79,11 @@ export default {
       vehicle: "",
 
       chartData: {
-        labels: this.datasetLabels,
+        labels: ["Jan", "Feb", "Mar"],
         datasets: [
           {
             backgroundColor: ["#5A3732", "#32355A", "#8D92CC"],
-            data: this.datasetData,
+            data: [1, 2, 3],
           },
         ],
       },

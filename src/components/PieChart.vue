@@ -66,7 +66,7 @@ export default {
     },
     datasetData: {
       type: Array,
-      default: () => [0, 0, 0],
+      default: () => [1, 1, 1],
     },
   },
   data() {
