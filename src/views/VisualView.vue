@@ -42,7 +42,7 @@
         <div class="data-pres">
           <!-- {{ vehicle }} -->
           <h3>Vehicle Weight(g)</h3>
-          <pie-chart></pie-chart>
+          <pie-chart :width="300" :height="300"></pie-chart>
         </div>
       </v-col>
     </v-row>
@@ -73,6 +73,16 @@ export default {
       bridgeKeys: [],
       bridgeData: "",
       vehicle: "",
+
+      chartData: {
+        labels: this.datasetLabels,
+        datasets: [
+          {
+            backgroundColor: ["#5A3732", "#32355A", "#8D92CC"],
+            data: this.datasetData,
+          },
+        ],
+      },
     };
   },
   mounted() {

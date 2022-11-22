@@ -42,11 +42,11 @@ export default {
     },
     width: {
       type: Number,
-      default: 150,
+      default: 200,
     },
     height: {
       type: Number,
-      default: 150,
+      default: 200,
     },
     cssClasses: {
       default: "",
@@ -66,7 +66,7 @@ export default {
     },
     datasetData: {
       type: Array,
-      default: () => [80, 10, 70],
+      default: () => [0, 0, 0],
     },
   },
   data() {
