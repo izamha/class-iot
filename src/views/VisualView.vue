@@ -42,21 +42,25 @@
         <div class="data-pres">
           <!-- {{ vehicle }} -->
           <v-row>
-            <v-col cols="6">
+            <v-col cols="4">
               <h3>Vehicle Weight(g)</h3>
               <pie-chart
                 :chart-data="chartData"
-                :width="200"
-                :height="200"
+                :width="150"
+                :height="150"
               ></pie-chart>
             </v-col>
-            <v-col cols="6">
-              <h3>Vehicle Weight(g)</h3>
+            <v-col cols="4">
+              <h3>Humidity(%rh)</h3>
               <pie-chart
-                :chart-data="chartData"
-                :width="200"
-                :height="200"
+                :chart-data="chartData2"
+                :width="150"
+                :height="150"
               ></pie-chart>
+            </v-col>
+            <v-col cols="4">
+              <h3>Weight(g) vs. Humidity(%rh)</h3>
+              <line-chart></line-chart>
             </v-col>
           </v-row>
         </div>
@@ -69,14 +73,14 @@
 import bridges from "../data/bridges2.json";
 import { mapState } from "vuex";
 // import BarChart from "../components/BarChart.vue";
-// import LineChart from "../components/LineChart.vue";
+import LineChart from "../components/LineChart.vue";
 import PieChart from "../components/PieChart.vue";
 
 export default {
   name: "VisualView",
   components: {
     // BarChart,
-    // LineChart,
+    LineChart,
     PieChart,
   },
   data() {
@@ -91,11 +95,20 @@ export default {
       vehicle: "",
 
       chartData: {
-        labels: ["Jan", "Feb", "Mar"],
+        labels: ["Sept", "Oct", "Nov"],
         datasets: [
           {
             backgroundColor: ["#5A3732", "#32355A", "#8D92CC"],
             data: [1, 2, 3],
+          },
+        ],
+      },
+      chartData2: {
+        labels: ["Sept", "Oct", "Nov"],
+        datasets: [
+          {
+            backgroundColor: ["#54945B", "#73E819", "#17D5D2"],
+            data: [5, 4, 3],
           },
         ],
       },
@@ -135,7 +148,7 @@ export default {
 </script>
 <style scoped>
 .data-pres {
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 .title {
   color: #62d54f;

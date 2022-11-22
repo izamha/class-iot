@@ -74,29 +74,17 @@ export default {
   data() {
     return {
       chartData: {
-        labels: [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sept",
-          "Oct",
-          "Nov",
-        ],
+        labels: ["Sept", "Oct", "Nov"],
         datasets: [
           {
             label: ["Weight(g)"],
             backgroundColor: ["#62D54F"],
-            data: [390, 100, 400, 390, 800, 400, 510, 700, 460, 100, 245],
+            data: [460, 100, 245],
           },
           {
             label: ["Humidity(%rh)"],
             backgroundColor: ["#133FAB"],
-            data: [80, 90, 43, 33, 56, 40, 39, 50, 46, 40, 45, 43],
+            data: [40, 45, 43],
           },
         ],
       },
