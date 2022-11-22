@@ -41,12 +41,24 @@
         </v-tabs>
         <div class="data-pres">
           <!-- {{ vehicle }} -->
-          <h3>Vehicle Weight(g)</h3>
-          <pie-chart
-            :chart-data="chartData"
-            :width="200"
-            :height="200"
-          ></pie-chart>
+          <v-row>
+            <v-col cols="6">
+              <h3>Vehicle Weight(g)</h3>
+              <pie-chart
+                :chart-data="chartData"
+                :width="200"
+                :height="200"
+              ></pie-chart>
+            </v-col>
+            <v-col cols="6">
+              <h3>Vehicle Weight(g)</h3>
+              <pie-chart
+                :chart-data="chartData"
+                :width="200"
+                :height="200"
+              ></pie-chart>
+            </v-col>
+          </v-row>
         </div>
       </v-col>
     </v-row>
