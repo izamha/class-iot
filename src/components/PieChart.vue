@@ -62,23 +62,11 @@ export default {
     },
     datasetLabels: {
       type: Array,
-      default: () => [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-      ],
+      default: () => ["Sep", "Oct", "Nov"],
     },
     datasetData: {
       type: Array,
-      default: () => [40, 20, 80, 10, 45, 23, 40, 20, 80, 10, 70],
+      default: () => [80, 10, 70],
     },
   },
   data() {
@@ -87,15 +75,7 @@ export default {
         labels: this.datasetLabels,
         datasets: [
           {
-            backgroundColor: [
-              "#E46651",
-              "#66ee51",
-              "#A1FA1C",
-              "#4A681F",
-              "#5A3732",
-              "#32355A",
-              "#8D92CC",
-            ],
+            backgroundColor: ["#5A3732", "#32355A", "#8D92CC"],
             data: this.datasetData,
           },
         ],

@@ -39,9 +39,11 @@
             Vehicle #{{ vehicles["vehicleId"] }}
           </v-tab>
         </v-tabs>
-        <h1>
-          {{ vehicle }}
-        </h1>
+        <div class="data-pres">
+          <!-- {{ vehicle }} -->
+          <h3>Vehicle Weight(g)</h3>
+          <pie-chart></pie-chart>
+        </div>
       </v-col>
     </v-row>
   </div>
@@ -52,14 +54,14 @@ import bridges from "../data/bridges2.json";
 import { mapState } from "vuex";
 // import BarChart from "../components/BarChart.vue";
 // import LineChart from "../components/LineChart.vue";
-// import PieChart from "../components/PieChart.vue";
+import PieChart from "../components/PieChart.vue";
 
 export default {
   name: "VisualView",
   components: {
     // BarChart,
     // LineChart,
-    // PieChart,
+    PieChart,
   },
   data() {
     return {
@@ -91,7 +93,7 @@ export default {
       this.bridgeData = this.bridges.bridges[this.bridgeKeys[index]];
     },
     currentVehicle(vehicles) {
-      this.vehicle = vehicles
+      this.vehicle = vehicles;
       return this.vehicle;
     },
     getKeys() {
@@ -106,6 +108,9 @@ export default {
 };
 </script>
 <style scoped>
+.data-pres {
+  margin-top: 20px;
+}
 .title {
   color: #62d54f;
 }
